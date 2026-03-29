@@ -1,0 +1,29 @@
+{
+  "name": "conductor-setup",
+  "version": "0.1.0",
+  "description": "Universal workspace setup script for Conductor (conductor.build)",
+  "bin": {
+    "conductor-setup": "./bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "scripts/"
+  ],
+  "keywords": [
+    "conductor",
+    "claude-code",
+    "codex",
+    "worktree",
+    "workspace",
+    "setup"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lixw1994/conductor-setup.git"
+  },
+  "homepage": "https://github.com/lixw1994/conductor-setup#readme",
+  "bugs": {
+    "url": "https://github.com/lixw1994/conductor-setup/issues"
+  },
+  "license": "MIT"
+}
