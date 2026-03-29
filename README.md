@@ -2,29 +2,28 @@
 
 Universal workspace setup script for [Conductor](https://conductor.build).
 
-One install, all repos. Auto-detects your project stack and installs dependencies from local cache — no network wait.
-
-## Quick start
-
 ```bash
-# Install
 npx conductor-setup install
-
-# It prints the path — paste it into Conductor:
-# Conductor → Repository Settings → Setup Script
 ```
 
-That's it. Every new workspace auto-runs the script.
+No global install needed. One command, all repos ready.
 
-## Commands
+Auto-detects your project stack and installs dependencies from local cache — no network wait.
 
-| Command | What it does |
-|---|---|
-| `npx conductor-setup install` | Install `setup.sh` to `~/.config/conductor-scripts/` |
-| `npx conductor-setup update` | Update to latest version |
-| `npx conductor-setup path` | Print the installed path (pipe-friendly) |
-| `npx conductor-setup run` | Execute directly (for testing) |
-| `npx conductor-setup uninstall` | Remove installed files |
+## How it works
+
+1. `npx conductor-setup install` — copies `setup.sh` to `~/.config/conductor-scripts/`
+2. Open Conductor → Repository Settings → Setup Script → paste the printed path
+3. Done. Every new workspace auto-runs the script.
+
+Other commands:
+
+```bash
+npx conductor-setup update      # Update to latest version
+npx conductor-setup path        # Print installed path (pipe-friendly)
+npx conductor-setup run         # Execute directly (for testing)
+npx conductor-setup uninstall   # Remove installed files
+```
 
 ## What it handles
 
