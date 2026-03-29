@@ -32,9 +32,9 @@ npx conductor-setup install
 4. GitHub Actions auto-publishes to npm (`.github/workflows/publish.yml`)
 
 Authentication via **npm Trusted Publishing** (OIDC) — no `NPM_TOKEN` secret needed. Requires:
-- npmjs.com 上已配置 Trusted Publishing（关联 `lixw1994/conductor-setup` + `publish.yml`）
-- workflow 中 `id-token: write` 权限 + Node >= 22 + `npm install -g npm@latest`（npm >= 11.5.1）
-- **不要设置 `NODE_AUTH_TOKEN`**，否则 npm 会用空 token 而不走 OIDC
+- Trusted Publishing configured on npmjs.com (linked to `lixw1994/conductor-setup` + `publish.yml`)
+- `id-token: write` permission + Node >= 22 + `npm install -g npm@latest` (npm >= 11.5.1)
+- **Do NOT set `NODE_AUTH_TOKEN`** — npm will use the empty token instead of falling back to OIDC
 
 ## Key constraints
 
