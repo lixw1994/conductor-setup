@@ -1,6 +1,6 @@
 {
   "name": "conductor-setup",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Universal workspace setup script for Conductor (conductor.build)",
   "bin": {
     "conductor-setup": "bin/cli.js"

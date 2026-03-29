@@ -31,7 +31,7 @@ npx conductor-setup install
 3. Create a GitHub Release on github.com (tag format: `v0.1.1`)
 4. GitHub Actions auto-publishes to npm (`.github/workflows/publish.yml`)
 
-The workflow uses `npm publish --provenance --access public` with `NPM_TOKEN` secret. No manual `npm publish` needed after first release.
+The workflow uses `npm publish --provenance --access public`. Authentication via **npm Trusted Publishing** (OIDC) — no `NPM_TOKEN` secret needed. The GitHub repo is linked on npmjs.com, GitHub Actions uses `id-token: write` permission to prove identity, npm verifies and authorizes the publish.
 
 ## Key constraints
 
