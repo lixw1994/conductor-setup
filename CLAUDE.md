@@ -26,12 +26,15 @@ npx conductor-setup install
 
 ## Release workflow
 
-1. Bump version in `package.json`
+1. Bump version: `npm version patch` (or minor/major) with `--no-git-tag-version`
 2. Commit and push to main
-3. Create a GitHub Release on github.com (tag format: `v0.1.1`)
+3. Create a GitHub Release on github.com (tag format: `v0.x.x`)
 4. GitHub Actions auto-publishes to npm (`.github/workflows/publish.yml`)
 
-The workflow uses `npm publish --provenance --access public`. Authentication via **npm Trusted Publishing** (OIDC) — no `NPM_TOKEN` secret needed. The GitHub repo is linked on npmjs.com, GitHub Actions uses `id-token: write` permission to prove identity, npm verifies and authorizes the publish.
+Authentication via **npm Trusted Publishing** (OIDC) — no `NPM_TOKEN` secret needed. Requires:
+- npmjs.com 上已配置 Trusted Publishing（关联 `lixw1994/conductor-setup` + `publish.yml`）
+- workflow 中 `id-token: write` 权限 + Node >= 22 + `npm install -g npm@latest`（npm >= 11.5.1）
+- **不要设置 `NODE_AUTH_TOKEN`**，否则 npm 会用空 token 而不走 OIDC
 
 ## Key constraints
 
