@@ -2,9 +2,9 @@
 # ============================================================================
 # Conductor Workspace Setup Script
 # ============================================================================
-# 由 npx conductor-setup 安装和管理
-# 支持: Node.js (pnpm → bun → npm) | Python (uv) | Go | env files
-# 原则: 全部利用本地缓存离线安装，不等网络
+# Installed and managed by: npx conductor-setup
+# Supports: Node.js (pnpm / bun / npm) | Python (uv) | Go | env files
+# Principle: install from local cache only, no network wait
 # ============================================================================
 set -euo pipefail
 
@@ -17,10 +17,10 @@ _start=$(date +%s)
 ROOT="${CONDUCTOR_ROOT_PATH:?CONDUCTOR_ROOT_PATH is not set}"
 
 # ============================================================================
-# 1. ENV 文件
-#    匹配: .env | .env.* (.env.local, .env.production, ...)
+# 1. Env files
+#    Match: .env | .env.* (.env.local, .env.production, ...)
 #           .*.env (.dev.env, .prod.env, .local.env, ...)
-#    跳过: .env.example / .env.sample / .env.template
+#    Skip:  .env.example / .env.sample / .env.template
 # ============================================================================
 _info "Linking env files..."
 env_count=0
@@ -45,11 +45,11 @@ done
 
 # ============================================================================
 # 2. Node.js
-#    lockfile 决定工具，不做跨工具回退
-#      pnpm-lock.yaml    → pnpm (全局 store 硬链接)
-#      bun.lock[b]       → bun  (全局缓存)
+#    Lockfile determines tool, no cross-tool fallback
+#      pnpm-lock.yaml    → pnpm (global store hardlinks)
+#      bun.lock[b]       → bun  (global cache)
 #      package-lock.json → npm ci
-#      无 lockfile       → npm install
+#      no lockfile       → npm install
 # ============================================================================
 if [ -f "package.json" ]; then
   _info "Detected Node.js project"
@@ -92,7 +92,7 @@ fi
 # 3. Python — uv only
 #    pyproject.toml → uv sync
 #    requirements.txt → uv venv + uv pip install
-#    全局缓存: ~/.cache/uv
+#    Global cache: ~/.cache/uv
 # ============================================================================
 if [ -f "pyproject.toml" ] || [ -f "requirements.txt" ]; then
   _info "Detected Python project"
@@ -117,7 +117,7 @@ fi
 
 # ============================================================================
 # 4. Go
-#    go mod download: 全局缓存 ~/go/pkg/mod
+#    go mod download: global cache ~/go/pkg/mod
 # ============================================================================
 if [ -f "go.mod" ]; then
   _info "Detected Go project"
@@ -133,7 +133,7 @@ if [ -f "go.mod" ]; then
 fi
 
 # ============================================================================
-# 完成
+# Done
 # ============================================================================
 _elapsed=$(( $(date +%s) - _start ))
 _ok "Setup complete in ${_elapsed}s"

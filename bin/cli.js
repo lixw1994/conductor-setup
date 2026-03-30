@@ -65,12 +65,12 @@ function showPath() {
     console.error(c.r("Not installed. Run: npx conductor-setup install"));
     process.exit(1);
   }
-  // 输出纯路径，方便 shell 管道使用
+  // Print raw path for shell piping
   console.log(INSTALL_PATH);
 }
 
 function run() {
-  // 直接执行 setup.sh (用于测试或 Conductor 直接调用)
+  // Execute setup.sh directly (for testing or Conductor invocation)
   const script = fs.existsSync(INSTALL_PATH) ? INSTALL_PATH : SOURCE_PATH;
 
   if (!process.env.CONDUCTOR_ROOT_PATH) {
@@ -94,7 +94,7 @@ function uninstall() {
     fs.unlinkSync(INSTALL_PATH);
     console.log(c.g("✓ Removed " + INSTALL_PATH));
 
-    // 如果目录为空，也删掉
+    // Remove empty directory
     try {
       const remaining = fs.readdirSync(INSTALL_DIR);
       if (remaining.length === 0) {
